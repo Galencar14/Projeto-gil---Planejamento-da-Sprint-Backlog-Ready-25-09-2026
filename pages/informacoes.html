@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura Atual</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="historico.html">Histórico</a>
+        <a href="lojas.html">Lojas</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="section container">
+    <div class="section-title">
+      <h2>Informações Cadastradas</h2>
+      <button class="btn btn-outline btn-small" id="editInfoBtn">Editar informações</button>
+    </div>
+
+    <div class="form-box">
+      <div class="form-row">
+        <label for="livro">Livro atual</label>
+        <input type="text" id="livro" class="editable-field" value="O Nome do Vento" disabled>
+      </div>
+      <div class="form-row">
+        <label for="autor">Autor</label>
+        <input type="text" id="autor" class="editable-field" value="Patrick Rothfuss" disabled>
+      </div>
+      <div class="form-row">
+        <label for="genero">Gênero</label>
+        <input type="text" id="genero" class="editable-field" value="Fantasia" disabled>
+      </div>
+      <div class="form-row">
+        <label for="totalPaginas">Total de páginas</label>
+        <input type="text" id="totalPaginas" class="editable-field" value="662" disabled>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>LetterBook — projeto acadêmico em desenvolvimento</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

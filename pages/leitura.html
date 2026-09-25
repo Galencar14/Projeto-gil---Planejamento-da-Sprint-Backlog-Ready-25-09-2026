@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitura Atual — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html" class="active">Leitura Atual</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="historico.html">Histórico</a>
+        <a href="lojas.html">Lojas</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="section container">
+    <div class="section-title">
+      <h2>Leitura Atual</h2>
+    </div>
+
+    <div class="reading-panel">
+      <div class="reading-cover">📘</div>
+      <div>
+        <span class="tag">Fantasia</span>
+        <h3>O Nome do Vento</h3>
+        <p>Autor: Patrick Rothfuss</p>
+
+        <p>Página <strong id="currentPageValue">214</strong> de 662</p>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width: 32%;"></div>
+        </div>
+
+        <button class="btn" id="startSessionBtn">Iniciar sessão de leitura</button>
+
+        <p style="margin-top: 14px; font-size: 0.88rem;">Quer registrar quanto você já leu? Acesse <a href="progresso.html" style="text-decoration: underline; color: var(--brown);">Registrar Progresso</a>.</p>
+
+        <div class="session-box" id="sessionBox">
+          Área da sessão de leitura — cronômetro será implementado em uma próxima sprint.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>LetterBook — projeto acadêmico em desenvolvimento</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

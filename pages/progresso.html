@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar Progresso — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura Atual</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="historico.html">Histórico</a>
+        <a href="lojas.html">Lojas</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="section container">
+    <div class="section-title">
+      <h2>Registrar Progresso</h2>
+    </div>
+
+    <div class="form-box">
+      <p>Livro atual: <strong>O Nome do Vento</strong></p>
+      <p>Página atual: <strong id="currentPageValue">214</strong> de 662</p>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 32%;"></div>
+      </div>
+
+      <div class="field-row">
+        <label for="pageInput">Nova página:</label>
+        <input type="number" id="pageInput" min="0" max="662" placeholder="ex: 230">
+        <button class="btn" id="updatePageBtn">Atualizar progresso</button>
+      </div>
+      <p class="msg-feedback" id="progressFeedback"></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>LetterBook — projeto acadêmico em desenvolvimento</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
