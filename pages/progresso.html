@@ -32,6 +32,7 @@
 
     <div class="form-box">
       <p>Livro atual: <strong>O Nome do Vento</strong></p>
+      <p>Status: <strong id="bookStatus">Lendo</strong></p>
       <p>Página atual: <strong id="currentPageValue">214</strong> de 662</p>
 
       <div class="progress-bar">
@@ -40,10 +41,16 @@
 
       <div class="field-row">
         <label for="pageInput">Nova página:</label>
-        <input type="number" id="pageInput" min="0" max="662" placeholder="ex: 230">
-        <button class="btn" id="updatePageBtn">Atualizar progresso</button>
+        <input type="number" id="pageInput" min="1" max="662" placeholder="ex: 230">
+        <button class="btn" id="updatePageBtn">Salvar página</button>
       </div>
       <p class="msg-feedback" id="progressFeedback"></p>
+
+      <div class="field-row">
+        <button class="btn" id="finishBookBtn">Marcar como concluído</button>
+        <button class="btn btn-outline btn-small" id="resetDemoBtn">Reiniciar demonstração</button>
+      </div>
+      <p class="msg-feedback" id="finishFeedback"></p>
     </div>
   </section>
 
