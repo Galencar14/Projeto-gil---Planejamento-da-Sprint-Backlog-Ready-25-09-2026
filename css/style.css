@@ -465,3 +465,58 @@ footer {
   color: var(--green);
   min-height: 1.2em;
 }
+
+/* ---- Notificações (PBI-05) ---- */
+.notif-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.notif-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.notif-item input {
+  margin-top: 4px;
+  accent-color: var(--brown);
+}
+
+.notif-item small {
+  display: block;
+  color: var(--text-light);
+}
+
+.notif-highlight {
+  padding: 14px;
+  border-radius: 10px;
+  background: #f1e7d2;
+  border-left: 4px solid var(--gold);
+}
+
+/* ---- Gerenciamento de livros (PBI-06) ---- */
+.review-panel {
+  margin-top: 20px;
+}
+
+.review-table {
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+
+.review-table th {
+  width: 40%;
+  font-size: 0.9rem;
+}
+
+/* Garante que elementos com o atributo hidden fiquem escondidos */
+[hidden] {
+  display: none !important;
+}
