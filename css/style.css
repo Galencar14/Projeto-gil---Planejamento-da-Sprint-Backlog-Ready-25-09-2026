@@ -465,3 +465,33 @@ footer {
   color: var(--green);
   min-height: 1.2em;
 }
+
+/* ---- Pódio (PBI-04) ---- */
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 18px 0 4px;
+}
+
+.filter-btn {
+  background: transparent;
+  color: var(--brown);
+  border: 2px solid var(--brown);
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--brown);
+  color: #fff;
+}
+
+tr.row-you td {
+  background: #fbf3df;
+  font-weight: 700;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}

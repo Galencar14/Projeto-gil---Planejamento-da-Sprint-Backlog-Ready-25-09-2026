@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pódio — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura Atual</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="podio.html" class="active">Pódio</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="historico.html">Histórico</a>
+        <a href="lojas.html">Lojas</a>
+        <a href="perfil.html">Perfil</a>
+      </nav>
+      <button class="menu-toggle" id="menuToggle">☰</button>
+    </div>
+  </header>
+
+  <section class="section container">
+    <div class="section-title">
+      <h2>Pódio de Leitores</h2>
+    </div>
+
+    <p>
+      Os pontos são contabilizados a partir dos livros concluídos, do tempo de leitura e das páginas lidas:
+      <strong>100 pts</strong> por livro, <strong>5 pts</strong> por hora de leitura e <strong>1 pt</strong> a cada 10 páginas.
+    </p>
+
+    <div class="filter-row">
+      <span>Filtrar pódio:</span>
+      <button class="btn btn-small filter-btn active" data-filtro="todos">Todos</button>
+      <button class="btn btn-small filter-btn" data-filtro="amizades">Amizades</button>
+    </div>
+    <p class="msg-feedback" id="podiumFeedback"></p>
+
+    <div class="podium" id="podium"></div>
+
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Nome</th>
+          <th>Livros concluídos</th>
+          <th>Páginas lidas</th>
+          <th>Tempo de leitura</th>
+          <th>Pontos</th>
+          <th>Amizade</th>
+        </tr>
+      </thead>
+      <tbody id="podiumTable"></tbody>
+    </table>
+    </div>
+
+    <div class="field-row" style="margin-top:16px;">
+      <button class="btn btn-outline btn-small" id="clearFriendsBtn">Remover todas as amizades (demonstração)</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>LetterBook — projeto acadêmico em desenvolvimento</p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>

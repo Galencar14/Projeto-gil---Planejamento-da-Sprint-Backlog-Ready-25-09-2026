@@ -160,3 +160,145 @@ function showFeedback(elementId, mensagem, erro) {
   el.textContent = mensagem;
   el.style.color = erro ? "#b23b3b" : "#2f4b3c";
 }
+
+// ---- PBI-04: contabilizar os livros concluídos no Pódio (filtro Todos / Amizades) ----
+const podiumEl = document.getElementById("podium");
+const podiumTable = document.getElementById("podiumTable");
+const filterBtns = document.querySelectorAll(".filter-btn");
+const clearFriendsBtn = document.getElementById("clearFriendsBtn");
+
+// Leitores da plataforma (dados fictícios do MVP)
+const leitores = [
+  { nome: "Mariana Costa", livros: 32, paginas: 8450, horas: 210 },
+  { nome: "João Pedro", livros: 27, paginas: 7120, horas: 185 },
+  { nome: "Ana Beatriz", livros: 24, paginas: 6890, horas: 170 },
+  { nome: "Lucas Almeida", livros: 19, paginas: 5230, horas: 132 },
+  { nome: "Carla Souza", livros: 15, paginas: 4310, horas: 98 },
+  { nome: "Rafael Lima", livros: 9, paginas: 2540, horas: 61 }
+];
+
+// Pontuação: 100 por livro concluído + 5 por hora de leitura + 1 a cada 10 páginas
+function calcularPontos(leitor) {
+  return leitor.livros * 100 + leitor.horas * 5 + Math.floor(leitor.paginas / 10);
+}
+
+// Dados do próprio usuário, contabilizados a partir do que ele registrou (PBI-07 e PBI-08)
+function getLeitorAtual() {
+  const historico = JSON.parse(localStorage.getItem("letterbook_historico") || "[]");
+  const paginaSalva = localStorage.getItem("letterbook_pagina");
+  const paginas = paginaSalva === null ? 0 : parseInt(paginaSalva);
+  return { nome: "Você", livros: historico.length, paginas: paginas, horas: Math.round((paginas * 2) / 60), voce: true };
+}
+
+function getAmizades() {
+  return JSON.parse(localStorage.getItem("letterbook_amizades") || "[]");
+}
+
+function salvarAmizades(lista) {
+  localStorage.setItem("letterbook_amizades", JSON.stringify(lista));
+}
+
+let filtroAtual = "todos";
+
+function renderPodium() {
+  if (!podiumEl || !podiumTable) return;
+
+  const amizades = getAmizades();
+  let lista = leitores.concat([getLeitorAtual()]);
+
+  if (filtroAtual === "amizades") {
+    lista = lista.filter(function (l) { return l.voce || amizades.indexOf(l.nome) !== -1; });
+  }
+
+  lista.forEach(function (l) { l.pontos = calcularPontos(l); });
+  lista.sort(function (a, b) { return b.pontos - a.pontos; });
+
+  // Pódio: 2º, 1º, 3º (o 1º fica no meio)
+  const medalhas = ["🥇", "🥈", "🥉"];
+  const ordemPodio = [1, 0, 2];
+  podiumEl.innerHTML = "";
+  ordemPodio.forEach(function (i) {
+    const l = lista[i];
+    if (!l) return;
+    const item = document.createElement("div");
+    item.className = "podium-item" + (i === 0 ? " first" : "");
+    item.innerHTML =
+      '<div class="card-cover" style="height:70px; font-size:1.6rem;">' + medalhas[i] + "</div>" +
+      "<strong></strong><p>" + l.pontos.toLocaleString("pt-BR") + " pts · " + l.livros + " livros</p>";
+    item.querySelector("strong").textContent = l.nome;
+    podiumEl.appendChild(item);
+  });
+
+  // Tabela completa
+  podiumTable.innerHTML = "";
+  lista.forEach(function (l, i) {
+    const tr = document.createElement("tr");
+    if (l.voce) tr.className = "row-you";
+    const ehAmigo = amizades.indexOf(l.nome) !== -1;
+    tr.innerHTML =
+      "<td>" + (i + 1) + "º</td><td class=\"nome\"></td>" +
+      "<td>" + l.livros + "</td>" +
+      "<td>" + l.paginas.toLocaleString("pt-BR") + "</td>" +
+      "<td>" + l.horas + "h</td>" +
+      "<td><strong>" + l.pontos.toLocaleString("pt-BR") + "</strong></td>" +
+      "<td></td>";
+    tr.querySelector(".nome").textContent = l.nome;
+
+    if (!l.voce) {
+      const btn = document.createElement("button");
+      btn.className = "btn btn-small" + (ehAmigo ? " btn-outline" : "");
+      btn.textContent = ehAmigo ? "Desfazer amizade" : "Adicionar amizade";
+      btn.addEventListener("click", function () { alternarAmizade(l.nome); });
+      tr.lastChild.appendChild(btn);
+    } else {
+      tr.lastChild.textContent = "—";
+    }
+    podiumTable.appendChild(tr);
+  });
+
+  filterBtns.forEach(function (b) {
+    b.classList.toggle("active", b.dataset.filtro === filtroAtual);
+  });
+}
+
+function alternarAmizade(nome) {
+  const amizades = getAmizades();
+  const pos = amizades.indexOf(nome);
+  if (pos === -1) amizades.push(nome); else amizades.splice(pos, 1);
+  salvarAmizades(amizades);
+
+  // Se ficou sem amizades enquanto o filtro estava em "Amizades", volta para "Todos"
+  if (filtroAtual === "amizades" && amizades.length === 0) {
+    filtroAtual = "todos";
+    showFeedback("podiumFeedback", "Você não tem mais amizades cadastradas. Exibindo o pódio de todos.", true);
+  }
+  renderPodium();
+}
+
+filterBtns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    const filtro = btn.dataset.filtro;
+
+    // FALHA: o usuário ainda não tem amizades cadastradas
+    if (filtro === "amizades" && getAmizades().length === 0) {
+      showFeedback("podiumFeedback", "Não é possível mostrar o pódio entre amizades: você ainda não tem amizades cadastradas. Use \"Adicionar amizade\" na tabela.", true);
+      return; // mantém o filtro atual
+    }
+
+    // SUCESSO: mostra o pódio filtrado
+    filtroAtual = filtro;
+    renderPodium();
+    showFeedback("podiumFeedback", filtro === "amizades" ? "Pódio entre você e suas amizades." : "Pódio entre todos os leitores.", false);
+  });
+});
+
+if (clearFriendsBtn) {
+  clearFriendsBtn.addEventListener("click", function () {
+    salvarAmizades([]);
+    filtroAtual = "todos";
+    renderPodium();
+    showFeedback("podiumFeedback", "Amizades removidas.", false);
+  });
+}
+
+renderPodium();
