@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de livros — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura</a>
+        <a href="historico.html">Histórico</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="lojas.html">Lojas</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="notificacoes.html" class="nav-icon" title="Notificações" aria-label="Notificações">🔔<span class="nav-count" id="navBellCount" hidden>0</span></a>
+        <a href="perfil.html" class="nav-icon" id="navAvatar" title="Meu perfil" aria-label="Meu perfil">NG</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="section-title">
+      <h1>Gerenciamento de livros</h1>
+      <p>Área do moderador: revise as informações cadastradas e confirme os novos livros da plataforma.</p>
+    </div>
+
+    <!-- PBI-06: revisar informações cadastradas -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Livro</th>
+            <th>Situação</th>
+            <th>Ação</th>
+          </tr>
+        </thead>
+        <tbody id="bookQueue"></tbody>
+      </table>
+    </div>
+
+    <div class="card" id="reviewPanel" style="margin-top: 20px;" hidden>
+      <h2>Informações cadastradas</h2>
+      <p class="msg-feedback" id="reviewFeedback"></p>
+      <table>
+        <tbody id="reviewInfo"></tbody>
+      </table>
+      <div class="btn-row">
+        <button class="btn" id="confirmBookBtn" hidden>Confirmar livro</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 LetterBook</p>
+  </footer>
+
+  <script src="../js/dados.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

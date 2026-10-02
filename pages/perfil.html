@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura</a>
+        <a href="historico.html">Histórico</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="lojas.html">Lojas</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="notificacoes.html" class="nav-icon" title="Notificações" aria-label="Notificações">🔔<span class="nav-count" id="navBellCount" hidden>0</span></a>
+        <a href="perfil.html" class="nav-icon active" id="navAvatar" title="Meu perfil" aria-label="Meu perfil">NG</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="card">
+      <div class="profile-header">
+        <div class="avatar" id="profileAvatar">NG</div>
+        <div>
+          <h1 id="profileName"></h1>
+          <p id="profileBio"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat"><strong data-stat="livros">0</strong><span>Livros concluídos</span></div>
+      <div class="stat"><strong data-stat="paginas">0</strong><span>Páginas lidas</span></div>
+      <div class="stat"><strong data-stat="tempo">0min</strong><span>Tempo de leitura</span></div>
+      <div class="stat"><strong data-stat="amizades">0</strong><span>Amizades</span></div>
+    </div>
+
+    <div class="two-col">
+      <div class="card">
+        <h2>Minhas informações</h2>
+        <div class="form-row">
+          <label for="nomeInput">Nome</label>
+          <input type="text" id="nomeInput" class="editable-field" disabled>
+        </div>
+        <div class="form-row">
+          <label for="bioInput">Sobre mim</label>
+          <textarea id="bioInput" class="editable-field" rows="3" disabled></textarea>
+        </div>
+        <button class="btn btn-outline btn-small" id="editInfoBtn">Editar informações</button>
+        <p class="msg-feedback" id="profileFeedback"></p>
+      </div>
+
+      <div class="card">
+        <h2>Amizades</h2>
+        <ul class="simple-list" id="friendList"></ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Minha conta</h2>
+      <div class="btn-row">
+        <a href="notificacoes.html" class="btn btn-outline btn-small">Configurar notificações</a>
+        <a href="informacoes.html" class="btn btn-outline btn-small">Gerenciar livros (moderador)</a>
+        <button class="btn btn-outline btn-small" id="clearReadingBtn">Zerar dados de leitura</button>
+        <button class="btn btn-outline btn-small" id="resetDemoBtn">Restaurar dados de exemplo</button>
+      </div>
+      <p class="msg-feedback" id="accountFeedback"></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 LetterBook</p>
+  </footer>
+
+  <script src="../js/dados.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

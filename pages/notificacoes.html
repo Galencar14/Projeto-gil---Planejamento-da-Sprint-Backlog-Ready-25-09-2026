@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificações — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura</a>
+        <a href="historico.html">Histórico</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="lojas.html">Lojas</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="notificacoes.html" class="nav-icon active" title="Notificações" aria-label="Notificações">🔔<span class="nav-count" id="navBellCount" hidden>0</span></a>
+        <a href="perfil.html" class="nav-icon" id="navAvatar" title="Meu perfil" aria-label="Meu perfil">NG</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="section-title">
+      <h1>Configurar notificações</h1>
+      <p>Marque os avisos que você quer receber. Você pode ter até 3 notificações ativas.</p>
+    </div>
+
+    <!-- PBI-05: confirmar o recebimento de sugestão de livro novo -->
+    <div class="card">
+      <h2>Minhas notificações <span class="tag" id="notifCount"></span></h2>
+      <div id="notifList"></div>
+      <p class="msg-feedback" id="notifFeedback"></p>
+    </div>
+
+    <div class="card">
+      <h2>Notificações recebidas</h2>
+      <ul class="simple-list" id="notifInbox"></ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 LetterBook</p>
+  </footer>
+
+  <script src="../js/dados.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

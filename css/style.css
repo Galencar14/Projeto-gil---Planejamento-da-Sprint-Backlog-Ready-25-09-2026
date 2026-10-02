@@ -1,0 +1,627 @@
+/* ===== LetterBook — estilos gerais ===== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Nunito+Sans:wght@400;600;700&display=swap');
+
+:root {
+  --bg: #f7f2e7;
+  --bg-card: #ffffff;
+  --brown: #6b4423;
+  --brown-dark: #47301a;
+  --green: #2f4b3c;
+  --gold: #c9a227;
+  --text: #3a2e22;
+  --text-light: #6f5f4d;
+  --border: #e3d6bd;
+  --error: #a83232;
+  --error-bg: #fbeaea;
+  --success: #2f6b4a;
+  --success-bg: #e6f2ea;
+  --radius: 14px;
+  --shadow: 0 4px 14px rgba(74, 51, 24, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.5;
+}
+
+h1, h2, h3 {
+  font-family: 'Fraunces', serif;
+  color: var(--brown-dark);
+  margin: 0 0 8px;
+}
+
+p {
+  color: var(--text-light);
+  margin: 0 0 8px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- Navbar ---- */
+.navbar {
+  background: var(--green);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #fff;
+  margin-right: auto;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links a {
+  color: #e9e1d0;
+  font-size: 0.92rem;
+  padding: 6px 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: #fff;
+  border-bottom-color: var(--gold);
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Sino de notificações e ícone do perfil (PBI-10) */
+.nav-icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-icon:hover,
+.nav-icon.active {
+  background: var(--gold);
+}
+
+.nav-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  padding: 0 4px;
+  border-radius: 10px;
+  background: var(--error);
+  font-size: 0.7rem;
+  line-height: 18px;
+  text-align: center;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    order: 3;
+    width: 100%;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+}
+
+/* ---- Títulos das páginas ---- */
+.section {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title p {
+  margin: 0;
+}
+
+/* ---- Botões ---- */
+.btn {
+  display: inline-block;
+  background: var(--brown);
+  color: #fff;
+  border: 2px solid var(--brown);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--brown-dark);
+  border-color: var(--brown-dark);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--brown);
+}
+
+.btn-outline:hover,
+.btn-outline.active {
+  background: var(--brown);
+  border-color: var(--brown);
+  color: #fff;
+}
+
+.btn-small {
+  padding: 5px 14px;
+  font-size: 0.82rem;
+  border-radius: 6px;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+/* ---- Cards e grades ---- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.grid .card {
+  margin: 0;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 700px) {
+  .two-col {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+.tag {
+  display: inline-block;
+  background: #f1e7d2;
+  color: var(--brown-dark);
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 6px;
+  vertical-align: middle;
+}
+
+.status {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.status.lendo {
+  background: #fdeecb;
+  color: #8a5a00;
+}
+
+.status.concluido {
+  background: #dcece1;
+  color: var(--green);
+}
+
+.status.pendente {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+/* ---- Mensagens de sucesso e de erro ---- */
+.msg-feedback {
+  margin: 12px 0;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.msg-feedback:empty {
+  display: none;
+}
+
+.msg-feedback.is-success {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.msg-feedback.is-success::before {
+  content: "✓ ";
+}
+
+.msg-feedback.is-error {
+  background: var(--error-bg);
+  color: var(--error);
+}
+
+.msg-feedback.is-error::before {
+  content: "⚠ ";
+}
+
+/* ---- Números do usuário ---- */
+.stats-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.stat {
+  flex: 1;
+  min-width: 140px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+}
+
+.stat strong {
+  display: block;
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--brown-dark);
+}
+
+.stat span {
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* ---- Livros ---- */
+.cover {
+  flex-shrink: 0;
+  width: 96px;
+  height: 140px;
+  border-radius: 4px 8px 8px 4px;
+  border-left: 6px solid rgba(0, 0, 0, 0.25);
+  padding: 12px 8px;
+  color: #fbf5e6;
+  font-family: 'Fraunces', serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  overflow: hidden;
+}
+
+.book-card,
+.reading-panel {
+  display: flex;
+  gap: 18px;
+}
+
+.reading-info {
+  flex: 1;
+}
+
+/* ---- Leitura atual (PBI-01 / PBI-07 / PBI-08) ---- */
+.progress-bar {
+  width: 100%;
+  height: 10px;
+  background: #ecdfc4;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--gold);
+}
+
+.session-clock {
+  font-family: 'Fraunces', serif;
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: var(--brown-dark);
+  font-variant-numeric: tabular-nums;
+}
+
+.field-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+input[type="number"],
+input[type="text"],
+textarea {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fdfaf3;
+  color: var(--text);
+}
+
+.field-row input {
+  width: 110px;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 18px 0;
+}
+
+/* ---- Histórico ---- */
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin-bottom: 10px;
+}
+
+.history-item p {
+  margin: 2px 0 0;
+}
+
+/* ---- Listas simples (membros, amizades, notificações) ---- */
+.simple-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.simple-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.simple-list li:last-child {
+  border-bottom: none;
+}
+
+.simple-list .tag {
+  margin: 0 0 0 6px;
+}
+
+/* ---- Comunidades (PBI-02) ---- */
+.post {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.post:last-child {
+  border-bottom: none;
+}
+
+.post p {
+  margin: 0;
+  color: var(--text);
+}
+
+/* ---- Ranking (PBI-03 / PBI-04) ---- */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 10px;
+  margin: 24px 0;
+}
+
+.podium-item {
+  flex: 1;
+  min-width: 0;
+  max-width: 180px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 8px;
+  text-align: center;
+}
+
+.podium-item p {
+  margin: 0;
+}
+
+.podium-item.first {
+  border-top: 4px solid var(--gold);
+  transform: translateY(-10px);
+}
+
+.medal {
+  font-size: 1.8rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+thead th {
+  background: #f1e7d2;
+  color: var(--brown-dark);
+}
+
+/* ---- Notificações (PBI-05) ---- */
+.setting-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.setting-row input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--green);
+}
+
+/* ---- Gerenciamento de livros (PBI-06) ---- */
+.pending {
+  color: var(--error);
+  font-weight: 700;
+}
+
+/* ---- Perfil (PBI-10) ---- */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--gold), var(--brown));
+  color: #fff;
+  font-family: 'Fraunces', serif;
+  font-size: 1.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-row {
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.form-row input,
+.form-row textarea {
+  width: 100%;
+}
+
+/* ---- Footer ---- */
+footer {
+  text-align: center;
+  padding: 26px 20px;
+  color: var(--text-light);
+  font-size: 0.85rem;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comunidades — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html">Leitura</a>
+        <a href="historico.html">Histórico</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="comunidades.html" class="active">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="lojas.html">Lojas</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="notificacoes.html" class="nav-icon" title="Notificações" aria-label="Notificações">🔔<span class="nav-count" id="navBellCount" hidden>0</span></a>
+        <a href="perfil.html" class="nav-icon" id="navAvatar" title="Meu perfil" aria-label="Meu perfil">NG</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="section-title">
+      <h1>Comunidades de leitores</h1>
+      <p>Troque experiências e descubra novos livros com outros leitores.</p>
+    </div>
+
+    <!-- PBI-02: lista de comunidades e o conteúdo da comunidade selecionada -->
+    <div class="grid" id="communityList"></div>
+
+    <div id="communityDetail" hidden>
+      <button class="btn btn-outline btn-small" id="communityBack">← Voltar para as comunidades</button>
+      <h2 id="communityName" style="margin-top: 16px;"></h2>
+      <p class="msg-feedback" id="communityFeedback"></p>
+
+      <div id="communityContent">
+        <div class="card">
+          <h3>Publicações</h3>
+          <div id="communityPosts"></div>
+        </div>
+        <div class="two-col">
+          <div class="card">
+            <h3>Membros</h3>
+            <ul class="simple-list" id="communityMembers"></ul>
+          </div>
+          <div class="card">
+            <h3>Livros em discussão</h3>
+            <ul class="simple-list" id="communityBooks"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 LetterBook</p>
+  </footer>
+
+  <script src="../js/dados.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

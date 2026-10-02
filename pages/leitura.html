@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leitura — LetterBook</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="leitura.html" class="active">Leitura</a>
+        <a href="historico.html">Histórico</a>
+        <a href="concluidos.html">Concluídos</a>
+        <a href="sugestoes.html">Sugestões</a>
+        <a href="comunidades.html">Comunidades</a>
+        <a href="ranking.html">Ranking</a>
+        <a href="lojas.html">Lojas</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="notificacoes.html" class="nav-icon" title="Notificações" aria-label="Notificações">🔔<span class="nav-count" id="navBellCount" hidden>0</span></a>
+        <a href="perfil.html" class="nav-icon" id="navAvatar" title="Meu perfil" aria-label="Meu perfil">NG</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="section-title">
+      <h1>Leitura atual</h1>
+      <p>Acompanhe o livro que você está lendo.</p>
+    </div>
+
+    <div class="card reading-panel" id="readingPanel"></div>
+
+    <div class="two-col">
+      <!-- PBI-01: iniciar a sessão de leitura -->
+      <div class="card">
+        <h2>Sessão de leitura</h2>
+        <p>Inicie uma sessão para mensurar o seu tempo de leitura e os seus livros lidos.</p>
+
+        <div class="session-clock" id="sessionClock">00:00:00</div>
+
+        <div class="btn-row">
+          <button class="btn" id="startSessionBtn">Iniciar sessão de leitura</button>
+          <button class="btn btn-outline" id="stopSessionBtn">Encerrar sessão</button>
+        </div>
+        <p class="msg-feedback" id="sessionFeedback"></p>
+
+        <hr class="divider">
+        <p>Tempo total de leitura: <strong data-stat="tempo">0min</strong></p>
+        <p>Livros lidos: <strong data-stat="livros">0</strong></p>
+      </div>
+
+      <!-- PBI-07 e PBI-08: registrar a página e concluir o livro -->
+      <div class="card">
+        <h2>Registrar progresso</h2>
+        <p>Informe a página em que você parou.</p>
+
+        <div class="field-row">
+          <label for="pageInput">Nova página:</label>
+          <input type="number" id="pageInput" min="1" placeholder="ex: 230">
+          <button class="btn" id="updatePageBtn">Salvar página</button>
+        </div>
+        <p class="msg-feedback" id="progressFeedback"></p>
+
+        <hr class="divider">
+        <p>Terminou o livro?</p>
+        <button class="btn btn-outline" id="finishBookBtn">Marcar como concluído</button>
+        <p class="msg-feedback" id="finishFeedback"></p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 LetterBook</p>
+  </footer>
+
+  <script src="../js/dados.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>

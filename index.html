@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LetterBook — Sua jornada de leitura</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">📖 LetterBook</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="pages/leitura.html">Leitura</a>
+        <a href="pages/historico.html">Histórico</a>
+        <a href="pages/concluidos.html">Concluídos</a>
+        <a href="pages/sugestoes.html">Sugestões</a>
+        <a href="pages/comunidades.html">Comunidades</a>
+        <a href="pages/ranking.html">Ranking</a>
+        <a href="pages/lojas.html">Lojas</a>
+      </nav>
+      <div class="nav-icons">
+        <a href="pages/notificacoes.html" class="nav-icon" title="Notificações" aria-label="Notificações">🔔<span class="nav-count" id="navBellCount" hidden>0</span></a>
+        <a href="pages/perfil.html" class="nav-icon" id="navAvatar" title="Meu perfil" aria-label="Meu perfil">NG</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="section container">
+    <div class="section-title">
+      <h1 id="homeGreeting">Olá!</h1>
+      <p>Acompanhe a sua leitura.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat"><strong data-stat="livros">0</strong><span>Livros concluídos</span></div>
+      <div class="stat"><strong data-stat="paginas">0</strong><span>Páginas lidas</span></div>
+      <div class="stat"><strong data-stat="tempo">0min</strong><span>Tempo de leitura</span></div>
+    </div>
+
+    <h2>Leitura atual</h2>
+    <div class="card reading-panel" id="readingPanel"></div>
+    <a href="pages/leitura.html" class="btn">Continuar leitura</a>
+  </main>
+
+  <footer>
+    <p>© 2026 LetterBook</p>
+  </footer>
+
+  <script src="js/dados.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
