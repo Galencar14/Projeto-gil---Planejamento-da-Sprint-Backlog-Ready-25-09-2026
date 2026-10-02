@@ -153,6 +153,84 @@ if (editBtn && infoInputs.length > 0) {
   });
 }
 
+// ---- PBI-03: abrir a aba Ranking e ver o próprio progresso ----
+const showProgressBtn = document.getElementById("showProgressBtn");
+const progressPanel = document.getElementById("progressPanel");
+
+// Junta os dados de leitura que o usuário já registrou (PBI-07 e PBI-08)
+function getUserReadingData() {
+  const paginaSalva = localStorage.getItem("letterbook_pagina");
+  const historico = JSON.parse(localStorage.getItem("letterbook_historico") || "[]");
+  const paginas = paginaSalva === null ? 0 : parseInt(paginaSalva);
+
+  return {
+    temDados: paginaSalva !== null || historico.length > 0,
+    livros: historico.length,
+    paginas: paginas,
+    minutos: paginas * 2 // estimativa: 2 minutos por página
+  };
+}
+
+// Lê os outros usuários direto da tabela do ranking (colunas: nome, livros, páginas)
+function getRankingUsers() {
+  const linhas = document.querySelectorAll("table tbody tr");
+  const usuarios = [];
+  linhas.forEach(function (linha) {
+    const colunas = linha.querySelectorAll("td");
+    if (colunas.length < 4) return;
+    usuarios.push({
+      nome: colunas[1].textContent.trim(),
+      livros: parseInt(colunas[2].textContent.replace(/\./g, "")) || 0,
+      paginas: parseInt(colunas[3].textContent.replace(/\./g, "")) || 0
+    });
+  });
+  return usuarios;
+}
+
+function formatarTempo(minutos) {
+  const horas = Math.floor(minutos / 60);
+  const resto = minutos % 60;
+  return horas + "h" + (resto > 0 ? " " + resto + "min" : "");
+}
+
+if (showProgressBtn && progressPanel) {
+  showProgressBtn.addEventListener("click", function () {
+    const dados = getUserReadingData();
+
+    // FALHA: o usuário ainda não inseriu dados nem iniciou nenhuma leitura
+    if (!dados.temDados) {
+      progressPanel.hidden = true;
+      showFeedback("rankingProgressFeedback", "Não há dados de leitura para exibir. Registre uma página em \"Registrar Progresso\" ou inicie uma leitura primeiro.", true);
+      return;
+    }
+
+    // SUCESSO: mostra os dados mensurados do usuário
+    const outros = getRankingUsers();
+    const posicao = 1 + outros.filter(function (u) {
+      return u.livros > dados.livros || (u.livros === dados.livros && u.paginas > dados.paginas);
+    }).length;
+    const mediaPaginas = outros.length === 0 ? 0 : Math.round(outros.reduce(function (soma, u) { return soma + u.paginas; }, 0) / outros.length);
+    const mediaLivros = outros.length === 0 ? 0 : (outros.reduce(function (soma, u) { return soma + u.livros; }, 0) / outros.length).toFixed(1);
+    const percentual = Math.min(100, Math.round((dados.paginas / totalPages) * 100));
+
+    document.getElementById("statLivros").textContent = dados.livros;
+    document.getElementById("statPaginas").textContent = dados.paginas.toLocaleString("pt-BR");
+    document.getElementById("statTempo").textContent = formatarTempo(dados.minutos);
+    document.getElementById("statPosicao").textContent = posicao + "º";
+
+    document.getElementById("compareSelf").textContent =
+      "Livro atual (O Nome do Vento): " + percentual + "% lido — página " + dados.paginas + " de " + totalPages + ".";
+    document.getElementById("rankingProgressFill").style.width = percentual + "%";
+
+    document.getElementById("compareOthers").textContent =
+      "Você ficaria em " + posicao + "º lugar entre " + (outros.length + 1) + " leitores. " +
+      "Média dos outros usuários: " + mediaLivros.toString().replace(".", ",") + " livros e " + mediaPaginas.toLocaleString("pt-BR") + " páginas.";
+
+    progressPanel.hidden = false;
+    showFeedback("rankingProgressFeedback", "Progresso carregado com seus dados de leitura.", false);
+  });
+}
+
 // Função utilitária para mostrar mensagens de feedback ao usuário
 function showFeedback(elementId, mensagem, erro) {
   const el = document.getElementById(elementId);

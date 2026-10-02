@@ -86,6 +86,46 @@
     </table>
   </section>
 
+  <!-- PBI-03: progresso do usuário dentro da aba Ranking -->
+  <section class="section container" id="meuProgresso">
+    <div class="section-title">
+      <h2>Meu Progresso</h2>
+      <button class="btn" id="showProgressBtn">Progresso</button>
+    </div>
+
+    <p class="msg-feedback" id="rankingProgressFeedback"></p>
+
+    <div class="form-box" id="progressPanel" hidden>
+      <div class="stats-row">
+        <div class="stat">
+          <strong id="statLivros">0</strong>
+          <span>Livros concluídos</span>
+        </div>
+        <div class="stat">
+          <strong id="statPaginas">0</strong>
+          <span>Páginas lidas</span>
+        </div>
+        <div class="stat">
+          <strong id="statTempo">0h</strong>
+          <span>Tempo de leitura (estimado)</span>
+        </div>
+        <div class="stat">
+          <strong id="statPosicao">—</strong>
+          <span>Posição no ranking</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:22px;">Comparado comigo mesmo</h3>
+      <p id="compareSelf"></p>
+      <div class="progress-bar">
+        <div class="progress-fill" id="rankingProgressFill" style="width: 0%;"></div>
+      </div>
+
+      <h3 style="margin-top:22px;">Comparado com outros usuários</h3>
+      <p id="compareOthers"></p>
+    </div>
+  </section>
+
   <footer>
     <p>LetterBook — projeto acadêmico em desenvolvimento</p>
   </footer>
